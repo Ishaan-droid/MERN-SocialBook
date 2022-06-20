@@ -4,6 +4,6 @@ const postController = require('../controllers/posts');
 const router = express.Router();
 
 router.route('/').get(postController.getPosts).post(postController.createPost);
-router.patch('/:id', postController.updatePost);
+router.patch('/:id', postController.updatePost).delete(postController.deletePost);
 
 module.exports = router;

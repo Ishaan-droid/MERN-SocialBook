@@ -49,3 +49,21 @@ exports.updatePost = async (req, res) => {
     });
   }
 };
+
+exports.deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Post.findByIdAndDelete(id);
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Post Deleted',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Unable to delete post.',
+    });
+  }
+};
