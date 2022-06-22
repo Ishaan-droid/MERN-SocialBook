@@ -1,21 +1,31 @@
+import { constants } from '../constants/actionTypes';
+
 const postReducer = (posts = [], action) => {
   switch (action.type) {
-    case 'FETCH_ALL':
+    case constants.FETCH_ALL:
       return action.payload;
-    case 'CREATE':
+    case constants.CREATE:
       return [...posts, action.payload];
-    case 'UPDATE_POST':
+    case constants.UPDATE_POST:
       const post = {
         data: [],
       };
       post.data = posts.data.map(cur => (cur._id === action.payload._id ? action.payload : cur));
       return post;
-    case 'DELETE_POST':
+    case constants.DELETE_POST:
       const newPosts = {
         data: [],
       };
       newPosts.data = posts.data.filter(cur => cur._id !== action.payload.id);
       return newPosts;
+    case constants.LIKE_POST:
+      const likePost = {
+        data: [],
+      };
+      likePost.data = posts.data.map(cur =>
+        cur._id === action.payload._id ? action.payload : cur
+      );
+      return likePost;
     default:
       return posts;
   }

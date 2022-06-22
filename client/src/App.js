@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPosts } from "./store/actions/posts";
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPosts } from './store/actions/posts';
 
-import { Container, AppBar, Typography, Grow, Grid } from "@mui/material";
-import "./app.css";
-import memories from "./images/memories.png";
-import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
+import { Container, AppBar, Typography, Grow, Grid } from '@mui/material';
+import './app.css';
+import memories from './images/memories.png';
+import Posts from './components/Posts/Posts';
+import Form from './components/Form/Form';
 
 function App() {
   const [currentId, setCurrentId] = useState();
@@ -27,12 +27,7 @@ function App() {
         </AppBar>
         <Grow in>
           <Container>
-            <Grid
-              container
-              justify="space-between"
-              alignItems="stretch"
-              spacing={3}
-            >
+            <Grid container justify="space-between" alignItems="stretch" spacing={3}>
               <Grid item xs={12} sm={7}>
                 <Posts setCurrentId={setCurrentId} />
               </Grid>

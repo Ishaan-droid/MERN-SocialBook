@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import FileBase from "react-file-base64";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import FileBase from 'react-file-base64';
 
-import { createPost, updatePost } from "../../store/actions/posts";
+import { createPost, updatePost } from '../../store/actions/posts';
 
-import { TextField, Button, Typography, Paper } from "@mui/material";
-import "./form.css";
+import { TextField, Button, Typography, Paper } from '@mui/material';
+import './form.css';
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
+    creator: '',
+    title: '',
+    message: '',
+    tags: '',
+    selectedFile: '',
   });
 
   const dispatch = useDispatch();
-  const post = useSelector((state) =>
-    currentId ? state.posts.data.find((cur) => cur._id === currentId) : null
+  const post = useSelector(state =>
+    currentId ? state.posts.data.find(cur => cur._id === currentId) : null
   );
 
   useEffect(() => {
@@ -28,15 +28,15 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(null);
     setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
+      creator: '',
+      title: '',
+      message: '',
+      tags: '',
+      selectedFile: '',
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (currentId) {
@@ -49,23 +49,16 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <Paper className="paper">
-      <form
-        className="form"
-        autoComplete="off"
-        noValidate
-        onSubmit={handleSubmit}
-      >
-        <Typography variant="h6">
-          {currentId ? "Edit the post" : "Create a Post"}
-        </Typography>
+      <form className="form" autoComplete="off" noValidate onSubmit={handleSubmit}>
+        <Typography variant="h6">{currentId ? 'Edit the post' : 'Create a Post'}</Typography>
         <TextField
           name="creator"
           variant="outlined"
           label="creator"
           fullWidth
           value={postData.creator}
-          onChange={(e) =>
-            setPostData((prevValue) => {
+          onChange={e =>
+            setPostData(prevValue => {
               return { ...prevValue, creator: e.target.value };
             })
           }
@@ -76,8 +69,8 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Title"
           fullWidth
           value={postData.title}
-          onChange={(e) =>
-            setPostData((prevValue) => {
+          onChange={e =>
+            setPostData(prevValue => {
               return { ...prevValue, title: e.target.value };
             })
           }
@@ -88,8 +81,8 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Message"
           fullWidth
           value={postData.message}
-          onChange={(e) =>
-            setPostData((prevValue) => {
+          onChange={e =>
+            setPostData(prevValue => {
               return { ...prevValue, message: e.target.value };
             })
           }
@@ -100,9 +93,9 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) =>
-            setPostData((prevValue) => {
-              return { ...prevValue, tags: e.target.value };
+          onChange={e =>
+            setPostData(prevValue => {
+              return { ...prevValue, tags: e.target.value.split(',') };
             })
           }
         />
@@ -111,7 +104,7 @@ const Form = ({ currentId, setCurrentId }) => {
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
-              setPostData((prevValue) => {
+              setPostData(prevValue => {
                 return { ...prevValue, selectedFile: base64 };
               })
             }
@@ -127,13 +120,7 @@ const Form = ({ currentId, setCurrentId }) => {
         >
           Submit
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
+        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>
           Clear
         </Button>
       </form>

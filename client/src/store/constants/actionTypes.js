@@ -1,0 +1,7 @@
+export const constants = {
+  FETCH_ALL: 'FETCH_ALL',
+  CREATE: 'CREATE',
+  UPDATE_POST: 'UPDATE_POST',
+  DELETE_POST: 'DELETE_POST',
+  LIKE_POST: 'LIKE_POST',
+};
