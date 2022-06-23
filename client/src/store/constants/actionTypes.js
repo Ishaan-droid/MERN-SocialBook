@@ -4,4 +4,6 @@ export const constants = {
   UPDATE_POST: 'UPDATE_POST',
   DELETE_POST: 'DELETE_POST',
   LIKE_POST: 'LIKE_POST',
+  AUTH: 'AUTH',
+  LOGOUT: 'LOGOUT',
 };

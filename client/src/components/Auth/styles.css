@@ -1,0 +1,23 @@
+.paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.avatar {
+  margin: 1rem;
+}
+
+.form {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.submit {
+  margin: 3rem 0 2rem;
+}
+
+.googleButton {
+  margin-bottom: 1rem;
+}

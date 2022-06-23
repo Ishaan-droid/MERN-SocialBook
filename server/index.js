@@ -4,6 +4,7 @@ const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const postRouter = require('./routes/posts');
+const userRouter = require('./routes/users');
 const { connectDB } = require('./utils/connectDB');
 
 const app = express();
@@ -16,6 +17,7 @@ app.use('/api', createProxyMiddleware({ target: 'http://localhost:8000', changeO
 
 // ROUTES
 app.use('/posts', postRouter);
+app.use('/users', userRouter);
 
 // DB CONNECTION
 connectDB();
