@@ -1,6 +1,5 @@
 import { Avatar, Button, Grid, Paper, Typography } from '@mui/material';
 import { Container } from '@mui/system';
-import { useHistory } from 'react-router-dom';
 import LockIcon from '@mui/icons-material/Lock';
 import './styles.css';
 import Input from './Input';
@@ -20,7 +19,6 @@ const Auth = () => {
   const [isSignUp, setIsSignup] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleShowPassword = () => setShowPassword(prevValue => !prevValue);
 
